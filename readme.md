@@ -60,6 +60,37 @@ src/
 
 ````
 
+## 1️⃣ Clone the repository:
+```
+git clone https://github.com/ashikurriyal/Library-Management-API.git
+cd Library-Management-API.git
+```
+
+## 2️⃣ Install dependencies:
+```
+npm install
+```
+
+## 3️⃣ Configure environment variables:
+Create a `.env` file in the project root:
+```
+PORT=5000
+DB_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/librarydb
+
+```
+
+## 4️⃣ Run the development server:
+```
+npm run dev
+
+```
+
+## 5️⃣ Build & run production:
+```
+npm run build
+npm start
+```
+
 ## 📁 Core Features 
 
 The **Library Management API** is packed with well-thought-out features designed to ensure a seamless and reliable system for managing books and borrowing activity. Below is a breakdown of its core functionalities:
