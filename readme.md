@@ -39,7 +39,7 @@ Core capabilities include:
 
 ## 📂 Project Structure
 
-```bash
+```
 src/
 │── app.ts                 # Express app entry
 │── server.ts              # Server & MongoDB connection
@@ -57,6 +57,8 @@ src/
 │   ├── interfaces/
 │   │   ├── book.interface.ts   # Book type definitions
 │   │   └── borrow.interface.ts # Borrow type definitions
+
+````
 
 ## 📁 Core Features 
 
@@ -151,7 +153,7 @@ This allows frontend clients to build fast, responsive, and user-friendly interf
 
 All error responses follow a standardized JSON structure:
 
-```json
+```
 {
   "message": "Validation failed",
   "success": false,
