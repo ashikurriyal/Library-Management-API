@@ -1,21 +1,21 @@
-import { Server } from "http";
 import mongoose from "mongoose";
-import app from "./app";
 import { config } from "./config";
+import app from "./app";
 
-let server: Server;
-
-async function main() {
+async function startServer() {
   try {
+    // Connect to MongoDB
     await mongoose.connect(config.dbUrl);
+    console.log("✅ Connected to MongoDB");
 
-    server = app.listen(config.port, () => {
-      console.log(`Server is running on PORT ${config.port}`);
+    // Start server
+    app.listen(config.port, () => {
+      console.log(`🚀 Server running on port ${config.port}`);
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.error("❌ Failed to connect to MongoDB", error);
+    process.exit(1); // Exit if DB connection fails
   }
 }
 
-main();
-export default app;
+startServer();
