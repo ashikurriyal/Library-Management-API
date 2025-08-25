@@ -6,19 +6,20 @@ import { notFound } from "./middlewares/notFound";
 
 const app = express();
 
-app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
+app.use(express.json());
 app.use("/api", routes);
 
-// 👇 root route
-app.get("/", (req, res) => {
-  res.send("📚 Welcome to the Book Borrowing API!");
-});
+app.get("/", (req, res) => res.send("📚 Welcome to the Book Borrowing API!"));
 
-// 404 for unknown routes
 app.use(notFound);
-
-// Global error handler
 app.use(globalError);
 
 export default app;

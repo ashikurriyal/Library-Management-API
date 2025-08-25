@@ -4,8 +4,7 @@ import borrowRoutes from "./borrow.routes";
 
 const router = Router();
 
-// Mount routes with prefixes
-router.use("/books", bookRoutes);    // /api/books/...
-router.use("/borrows", borrowRoutes); // /api/borrows/...
+router.use("/books", bookRoutes);     // /api/books
+router.use("/borrows", borrowRoutes); // /api/borrows
 
 export default router;
