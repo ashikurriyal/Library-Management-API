@@ -1,21 +1,18 @@
-import mongoose from "mongoose";
-import { config } from "./config";
+import dotenv from "dotenv";
+dotenv.config();
+
 import app from "./app";
+import { connectDB } from "./config/db";
 
-async function startServer() {
-  try {
-    // Connect to MongoDB
-    await mongoose.connect(config.dbUrl);
-    console.log("✅ Connected to MongoDB");
+const PORT = process.env.PORT || 5001;
+const DB_URL = process.env.MONGO_URI as string; // <- fixed
 
-    // Start server
-    app.listen(config.port, () => {
-      console.log(`🚀 Server running on port ${config.port}`);
-    });
-  } catch (error) {
-    console.error("❌ Failed to connect to MongoDB", error);
-    process.exit(1); // Exit if DB connection fails
-  }
+async function bootstrap() {
+  await connectDB(DB_URL);
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 }
 
-startServer();
+bootstrap().catch(err => {
+  console.error("❌ Failed to start:", err);
+  process.exit(1);
+});

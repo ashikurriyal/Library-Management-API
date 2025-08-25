@@ -1,20 +1,24 @@
-import express, { Application, Request, Response } from "express";
-import { bookRoutes } from "./app/controllers/book.controller";
-import { borrowRoutes } from "./app/controllers/borrow.controller";
-import { errorHandler } from "./app/moddlewares/erroHandler";
-import { notFound } from "./app/moddlewares/notFound";
+import express from "express";
+import cors from "cors";
+import routes from "./routes";
+import { globalError } from "./middlewares/globalError";
+import { notFound } from "./middlewares/notFound";
 
-const app: Application = express();
+const app = express();
+
 app.use(express.json());
 
-app.use("/api/books", bookRoutes);
-app.use("/api/borrow", borrowRoutes);
+app.use("/api", routes);
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Server is running");
+// 👇 root route
+app.get("/", (req, res) => {
+  res.send("📚 Welcome to the Book Borrowing API!");
 });
 
-
+// 404 for unknown routes
 app.use(notFound);
-app.use(errorHandler);
+
+// Global error handler
+app.use(globalError);
+
 export default app;

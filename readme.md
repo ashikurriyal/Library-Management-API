@@ -41,22 +41,32 @@ Core capabilities include:
 
 ```
 src/
-│── app.ts                 # Express app entry
-│── server.ts              # Server & MongoDB connection
-│── config.ts              # Environment configuration
+│── app.ts
+│── server.ts
 │
-├── app/
-│   ├── models/
-│   │   ├── book.model.ts   # Book schema & static methods
-│   │   └── borrow.model.ts # Borrow schema
-│   │
-│   ├── controllers/
-│   │   ├── book.controller.ts   # Book API logic
-│   │   └── borrow.controller.ts # Borrow API logic
-│   │
-│   ├── interfaces/
-│   │   ├── book.interface.ts   # Book type definitions
-│   │   └── borrow.interface.ts # Borrow type definitions
+├── config/
+│   └── db.ts
+│
+├── middlewares/
+│   ├── globalError.ts
+│   └── notFound.ts
+│
+├── utils/
+│   └── sendResponse.ts
+│
+├── models/
+│   ├── book.model.ts
+│   └── borrow.model.ts
+│
+├── controllers/
+│   ├── book.controller.ts
+│   └── borrow.controller.ts
+│
+└── routes/
+    ├── index.ts
+    ├── book.routes.ts
+    └── borrow.routes.ts
+
 
 ````
 
